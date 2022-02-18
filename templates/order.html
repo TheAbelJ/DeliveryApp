@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Delivery Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body style="background-color:powderblue;">
+    <div class="container">
+      <br>
+      <table style=" background-repeat:no-repeat; width:850px;margin:0;" cellpadding="0" cellspacing="0" border=black>
+        <th class="name-row">Item name</th>
+        <th class="name-row">Pickup Address</th>
+        <th class="name-row">Delivery Address</th>
+        <th class="name-row">Status of order</th>
+        <th class="name-row">Delivery User</th>
+        <th class="name-row">location of Agent</th>
+        <th class="name-row">Delivery User Phoneno</th>
+         
+        <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+        {% for item in orderitems %}
+        <tr>
+          <td class="name-row">{{item.itemname}}</td>
+          <td class="name-row">{{item.pickupaddress}}</td>
+          <td class="name-row">{{item.deliveryaddress}}</td>
+          <td class="name-row">{{item.statusoforder}}</td>
+          <td class="name-row">{{item.deliveryusername}}</td>
+          <td class="name-row">{{item.locationofagent}}</td>
+          <td class="name-row">{{item.deliveryuserphoneno}}</td>
+        </tbody>
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="login-box" style="position:relative;left:490px;top:100px;">
+        <div class="login-logo">
+            <b>
+                <div class="center" style="font-size:32px ;color:  #2e86c1 ;font-family:courier,arial,helvetica">Order Here</div></b>
+        </div>
+        <form action="/orderitem" method="post">
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="item name" name="itemname" value="{{
+            request.form.itemname }}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="pickup address" name="pickupaddress" value="{{
+            request.form.pickupaddress }}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="New Address" name="newaddress" value="{{
+            request.form.newaddress }}">
+          </div>
+          <div class="form-group has-feedback">
+            <select class="form-control select2"  name="deliveryaddress" value="{{
+            request.form.deliveryaddress }}">
+              <option value="" disabled selected>select from existing address</option>
+              {% for o in user.deliveryaddress %}
+              <option value="{{ o}}">{{o }}</option>
+              {% endfor %}
+          </select> 
+          </div>
+          <div class="form-group has-feedback">
+            <input class="btn btn-default" type="submit" value="Order">
+          </div>
+        </form>
+      </div>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
