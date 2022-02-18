@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Document</title>
 </head>
-<body>
-    <h1>hello</h1>
-    
+<body style="background-color:powderblue;">
+     <div class="container">
+        <br>
+        <table style=" background-repeat:no-repeat; width:850px;margin:0;" cellpadding="0" cellspacing="0" border=black>
+          <th class="name-row">Username</th>
+          <th class="name-row">Email</th>
+          <th class="name-row">User Role</th>
+          <th class="name-row">Phone Number</th>   
+          <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+          {% for user in users %}
+          <tr>
+            <td class="name-row">{{user.username}}</td>
+            <td class="name-row">{{user.usermailid}}</td>
+            <td class="name-row">{{user.userrole}}</td>
+            <td class="name-row">{{user.userphoneno}}</td>
+          </tbody>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
