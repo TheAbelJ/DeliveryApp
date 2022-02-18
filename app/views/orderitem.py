@@ -39,14 +39,12 @@ def orderupdate():
 		if (current_user.userrole=="deliveryuser"):		
 			orderid = request.form["orderid"]
 			statusoforder = request.form["statusoforder"]
-			deliveryusername = request.form["deliveryusername"]
 			locationofagent = request.form["locationofagent"]
-			deliveryuserphoneno = request.form["deliveryuserphoneno"]
 			order = OrderDetails.objects.get(orderid=orderid)
 			order.statusoforder = statusoforder
-			order.deliveryusername = deliveryusername
+			order.deliveryusername = current_user.username
 			order.locationofagent = locationofagent
-			order.deliveryuserphoneno = deliveryuserphoneno
+			order.deliveryuserphoneno = current_user.userphoneno
 			order.save()
 			orderitems=OrderDetails.objects
 			return render_template("deliveryupdate.html",orderitems=orderitems)

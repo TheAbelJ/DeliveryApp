@@ -17,9 +17,9 @@
           <div class="form-group has-feedback">
             <select class="form-control select2"  name="orderid" value="{{
             request.form.orderid }}">
-              <option value="" disabled selected>User Type</option>
+              <option value="" disabled selected>Order id</option>
               {% for item in orderitems %}  
-                <option value="{{item.orderid}}" >{{item.orderid}}</option>
+                <option value="{{item.orderid}}" >{{item.orderid}}</option>   <!-- Cycles through order ids-->
               {% endfor %}
                   
           </select> 
@@ -29,17 +29,10 @@
             request.form.statusoforders}}">
           </div>
           <div class="form-group has-feedback">
-            <input type="text" placeholder="delivery user name" name="deliveryusername" value="{{
-            request.form.deliveryusername }}">
-          </div>
-          <div class="form-group has-feedback">
             <input type="text" placeholder="location of agent" name="locationofagent" value="{{
             request.form.locationofagent }}">
           </div>
-          <div class="form-group has-feedback">
-            <input type="text" placeholder="delivery user phoneno" name="deliveryuserphoneno" value="{{
-            request.form.deliveryuserphoneno}}">
-          </div>
+
           <div class="form-group has-feedback">
             <input class="btn btn-default" type="submit" value="Update">
           </div>
