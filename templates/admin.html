@@ -7,7 +7,7 @@
 </head>
 <body style="background-color:powderblue;">
      <div class="container">
-        <br>
+        <h3>User List</h3>
         <table style=" background-repeat:no-repeat; width:850px;margin:0;" cellpadding="0" cellspacing="0" border=black>
           <th class="name-row">Username</th>
           <th class="name-row">Email</th>
@@ -25,5 +25,33 @@
           {% endfor %}
         </table>
     </div>
+    <div class="container">
+      <h3>Hotel List</h3>
+      <table style=" background-repeat:no-repeat; width:850px;margin:0;" cellpadding="0" cellspacing="0" border=black>
+        <th class="name-row">Hotel Id</th>
+        <th class="name-row">Hotel Name</th>
+        <th class="name-row">Hotel Address</th>
+        <th class="name-row">Hotel Phone</th>
+        <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+        {% for hotel in hotels %}
+        <tr>
+          <td class="name-row">{{hotel.hotelid}}</td>
+          <td class="name-row">{{hotel.hotelname}}</td>
+          <td class="name-row">{{hotel.hoteladdress}}</td>
+          <td class="name-row">{{hotel.hotelphone}}</td>
+        </tbody>
+        </tr>
+        {% endfor %}
+      </table>
+      <br>
+      <form action="" method="post">
+        <div class="form-group has-feedback">
+          <input class="btn btn-default" type="submit" name="HotelUpdate" value="HotelUpdate">
+        </div>
+        <div class="form-group has-feedback">
+          <input class="btn btn-default" type="submit" name="Logout" value="Logout">
+        </div>
+      </form>
+  </div>
 </body>
 </html>
